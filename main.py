@@ -66,7 +66,7 @@ def priorityAlgorithm():
     """
     process = [1, 2, 3, 4]
     priority = [2, 1, 4, 3]
-    time_taken_by_process = [21, 3, 6, 2]
+    time_taken_by_process = [12, 10, 5, 14]
 
     list_after_priority = [x for _, x in sorted(zip(priority, time_taken_by_process))]
 
@@ -104,6 +104,12 @@ def priorityAlgorithm():
     print("Total waiting time => ", count, "ms")
     print("Average waiting time => ", str(count) + "/" + str(len(process)), "=", count / len(process), "ms")
 
+def roundRobin():
+    """
+                      ================ Round Robin - OS Scadualing Algorithm ================
+    """
+
 
 if __name__ == "__main__":
+
     priorityAlgorithm()
