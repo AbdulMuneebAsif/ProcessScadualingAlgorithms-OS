@@ -1,14 +1,19 @@
 import pandas as pd
 
+path = r"C:\Users\h\Desktop\myExcleFile.csv"
+df = pd.read_csv(path)
+
+
 def firstComeFirstServe():
     """
                   ================ First come first serve - FCFS - OS Scadualing Algorithm ================
     """
-    df = pd.read_excel('myExcleFile.csv')
+
     # process = [1, 2, 3, 4]
-    process = df[1].tolist()
+    process = df["Process"].tolist()
     # time_taken_by_process = [12, 10, 5, 14]
-    time_taken_by_process= df[2].tolist()
+    time_taken_by_process = df["ET"].tolist()
+
     waiting_time_of_process = 0
     count = 0
 
@@ -34,8 +39,10 @@ def shortestJobFirst():
     """
                   ================ Shortest Job First - SRF - OS Scadualing Algorithm ================
     """
-    process = [1, 2, 3, 4]
-    time_taken_by_process = [12, 10, 5, 14]
+    # process = [1, 2, 3, 4]
+    process = df["Process"].tolist()
+    # time_taken_by_process = [12, 10, 5, 14]
+    time_taken_by_process = df["ET"].tolist()
     waiting_time_of_process = 0
     count = 0
 
@@ -66,9 +73,13 @@ def priorityAlgorithm():
     """
                   ================ Priority Algorithm - OS Scadualing Algorithm ================
     """
-    process = [1, 2, 3, 4]
-    priority = [2, 1, 4, 3]
-    time_taken_by_process = [12, 10, 5, 14]
+
+    # process = [1, 2, 3, 4]
+    process = df["Process"].tolist()
+    # time_taken_by_process = [12, 10, 5, 14]
+    time_taken_by_process = df["ET"].tolist()
+    # priority = [2, 1, 4, 3]
+    priority = df["Priority"].tolist()
 
     list_after_priority = [x for _, x in sorted(zip(priority, time_taken_by_process))]
 
@@ -158,6 +169,7 @@ def findWaitingTime(processes, numberOfProcesses, executionTime, wt, quantum):
         if done:
             break
 
+
 # Function to calculate average waiting
 # and turn-around times.
 def findAverageTime(processes, n, executionTime, quantum):
@@ -168,8 +180,7 @@ def findAverageTime(processes, n, executionTime, quantum):
     findWaitingTime(processes, n, executionTime,
                     waiting_time, quantum)
 
-
-    #Display processes along with all details
+    # Display processes along with all details
 
     print("Processes Execution Time	 Waiting Time")
     total_waiting_time = 0
@@ -185,16 +196,17 @@ def roundRobin():
     """
                       ================ Round Robin - OS Scadualing Algorithm ================
     """
-    # Process id's
-    process = [1, 2, 3, 4]
-    n = 4
+    # process = [1, 2, 3, 4]
 
-    # Burst time of all processes
-    burst_time = [12, 10, 5, 14]
+    process = df["Process"].tolist()
+    # time_taken_by_process = [12, 10, 5, 14]
+    time_taken_by_process = df["ET"].tolist()
+
+    n = len(process)
 
     # Time quantum
     quantum = 5
-    findAverageTime(process, n, burst_time, quantum)
+    findAverageTime(process, n, time_taken_by_process, quantum)
 
 
 def menu():
